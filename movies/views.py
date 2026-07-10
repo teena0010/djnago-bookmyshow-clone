@@ -141,6 +141,30 @@ def razorpay_checkout(request, order_id):
     }
     return render(request, 'movies/razorpay_checkout.html', context)
 
+def trigger_email_task(booking_id, payment_id):
+    # Retrieve configuration from Environment Variables
+    base_url = os.environ.get('QSTASH_URL')
+    token = os.environ.get('QSTASH_TOKEN')
+    
+    # The URL where your Django app is hosted (e.g., https://your-app.vercel.app)
+    app_url = "https://djnago-bookmyshow-clone-4fje-6r3rl513a-teena33.vercel.app"
+    destination = f"{app_url}/email-webhook/"
+    
+    url = f"{base_url}/v2/publish/{destination}"
+    
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "booking_id": booking_id,
+        "payment_id": payment_id
+    }
+    
+    # Triggering the task
+    requests.post(url, json=payload, headers=headers)
+
 @csrf_exempt
 def razorpay_verify(request):
     if request.method == "POST":
@@ -185,10 +209,13 @@ def razorpay_verify(request):
 @csrf_exempt
 def email_webhook(request):
     if request.method == "POST":
-        data = json.loads(request.body)
-        send_ticket_email(data['booking_id'], data['payment_id'])
-        return HttpResponse("Email processed", status=200)
-    return HttpResponse("Bad Request", status=400)
+        try:
+            data = json.loads(request.body)
+            send_ticket_email(data['booking_id'], data['payment_id'])
+            return HttpResponse("Email processed", status=200)
+        except Exception as e:
+            return HttpResponse(str(e), status=500)
+    return HttpResponse("Invalid request", status=400)
 
 @csrf_exempt
 def razorpay_webhook(request):
