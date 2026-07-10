@@ -3,6 +3,7 @@ from django.db import transaction
 from django.utils import timezone
 from datetime import timedelta
 from celery import shared_task
+from django.core.mail import send_mail
 from .models import Order, Seat
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -11,7 +12,7 @@ from .models import Booking
 
 logger = logging.getLogger('celery_tasks')
 
-@shared_task(bind=True)
+@shared_task(bind=True, autoretry_for=(Exception,), retry_backoff=True, retry_kwargs={'max_retries': 3})
 def send_ticket_email(self,booking_id, payment_id):
     try:
         booking = Booking.objects.get(id=booking_id)
