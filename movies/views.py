@@ -166,14 +166,15 @@ def razorpay_verify(request):
                 if created:
                     seat.is_booked = True
                     seat.save()
-                    send_ticket_email.delay(booking_id=booking.id, payment_id=params['razorpay_payment_id'])
-            
-            return redirect('payment_success')
+                    try:
+                        send_ticket_email.delay(booking_id=booking.id, payment_id=params['razorpay_payment_id'])
+                    except Exception as e:
+                        print(f"Non-critical error: Email task could not be queued: {e}")
+                    return redirect('payment_success')
         except Exception as e:
             # IMPORTANT: Print this in your terminal to see WHY it's failing
             print(f"CRITICAL FULFILLMENT ERROR: {e}")
             return redirect('payment_cancel')
-    return redirect('payment_cancel')
 
 @csrf_exempt
 def razorpay_webhook(request):
