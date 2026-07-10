@@ -146,27 +146,9 @@ LOGGING = {
         }
     },
 }
-CELERY_BROKER_URL = os.environ.get('REDIS_URL') 
-CELERY_BROKER_CONNECTION_RETRY = True
-CELERY_BROKER_CONNECTION_MAX_RETRIES = 5
-CELERY_BROKER_TRANSPORT_OPTIONS = {
-    'visibility_timeout': 3600,
-    'socket_connect_timeout': 30, }
-CELERY_BROKER_USE_SSL = True
-CELERY_REDIS_BACKEND_USE_SSL = True
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_BACKEND = 'django-db'
 
 RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')
 RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
-
-CELERY_BEAT_SCHEDULE = {
-    'release-expired-seats': {
-        'task': 'movies.tasks.release_expired_reservations',
-        'schedule': crontab(minute='*'), 
-    },
-}
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
