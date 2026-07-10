@@ -14,19 +14,8 @@ from pathlib import Path
 import os
 from celery.schedules import crontab
 import dj_database_url
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    pass
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-try:
-    from dotenv import load_dotenv
-    env_path = os.path.join(BASE_DIR, '.env')
-    load_dotenv(env_path)
-except ImportError:
-    pass
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
