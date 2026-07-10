@@ -200,7 +200,7 @@ def razorpay_verify(request):
                     seat.save()
                     trigger_email_task(booking.id, params['razorpay_payment_id'])
                     
-        return redirect('payment_success')
+            return redirect('payment_success')
         except Exception as e:
             # IMPORTANT: Print this in your terminal to see WHY it's failing
             print(f"CRITICAL FULFILLMENT ERROR: {e}")
