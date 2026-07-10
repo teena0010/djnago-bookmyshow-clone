@@ -116,10 +116,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') # Use a Google App Password!
 
-CELERY_BROKER_URL = os.getenv('REDIS_URL')
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -150,6 +146,11 @@ LOGGING = {
     },
 }
 CELERY_BROKER_URL = os.environ.get('REDIS_URL') 
+CELERY_BROKER_CONNECTION_RETRY = True
+CELERY_BROKER_CONNECTION_MAX_RETRIES = 5
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    'visibility_timeout': 3600,
+    'socket_connect_timeout': 30, }
 CELERY_BROKER_USE_SSL = False
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
