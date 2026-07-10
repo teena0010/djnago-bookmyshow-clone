@@ -1,0 +1,18 @@
+{% extends "users/basic.html" %}
+
+{% block content %}
+<div class="container text-center py-5 d-flex justify-content-center">
+    <div class="card shadow p-5" style="max-width: 600px; width: 100%; border-top: 5px solid #28a745;">
+        <div class="mb-4">
+            <span style="font-size: 4rem; color: #28a745;">✅</span>
+        </div>
+        <h1 class="text-success mb-3">Payment Successful!</h1>
+        <p class="lead">Your tickets have been securely booked.</p>
+        <p class="text-muted">Your payment was cryptographically verified. An email confirmation with your ticket details will be sent shortly.</p>
+        
+        <div class="mt-4">
+            <a href="/" class="btn btn-primary px-4 py-2">Go to Homepage</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

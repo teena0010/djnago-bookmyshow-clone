@@ -1,0 +1,26 @@
+{% extends "admin/index.html" %}
+{% block content %}
+<div style="display: flex; gap: 20px; margin-bottom: 20px;">
+    <div style="padding: 10px; border: 1px solid #ccc; background: white; color: #333;">
+        <h3 style="color: #333;">Daily Revenue</h3>
+        <p style="font-size: 24px; font-weight: bold;">₹{{ stats.daily_revenue }}</p>
+    </div>
+
+    <div style="padding: 10px; border: 1px solid #ccc; background: white; color: #333;">
+        <h3 style="color: #333;">Occupancy Rate</h3>
+        <p style="font-size: 24px; font-weight: bold;">{{ stats.occupancy_rate }}%</p>
+    </div>
+</div>
+
+<div style="padding: 10px; border: 1px solid #ccc; background: white; color: #333;">
+    <h3 style="color: #333;" style="color: #333;">Top 5 Movies</h3>
+    <ul style="color: #333;">
+        {% for movie in stats.popular_movies %}
+        <li>{{ movie.movie__name }} - {{ movie.booking_count }} bookings</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Peak Booking Hour:</strong> {{ stats.peak_hour }}:00</p>
+</div>
+
+{{ block.super }}
+{% endblock %}

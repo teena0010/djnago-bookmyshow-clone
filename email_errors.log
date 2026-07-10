@@ -1,0 +1,579 @@
+ERROR 2026-06-20 20:28:42,824 log Internal Server Error: /movies/theater/3/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 65, in book_seats
+    return render(request,"movies/seat_selection.html",{'theater':theater,"seats":seats,'error':"No seat selected"})
+                                                                  ^^^^^^^
+NameError: name 'theater' is not defined. Did you mean: 'Theater'?
+ERROR 2026-06-20 20:28:42,832 basehttp "POST /movies/theater/3/seats/book/ HTTP/1.1" 500 78905
+ERROR 2026-06-20 20:29:35,600 log Internal Server Error: /movies/theater/1/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 80, in book_seats
+    send_ticket_email.delay(booking_id=booking.id, payment_id="PAY-12345")
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'delay'
+ERROR 2026-06-20 20:29:35,600 basehttp "POST /movies/theater/1/seats/book/ HTTP/1.1" 500 79516
+ERROR 2026-06-20 20:29:46,071 log Internal Server Error: /movies/theater/1/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 84, in book_seats
+    error_message=f"The following seats are already booked:{',',join(error_seats)}"
+                                                                ^^^^
+NameError: name 'join' is not defined
+ERROR 2026-06-20 20:29:46,071 basehttp "POST /movies/theater/1/seats/book/ HTTP/1.1" 500 79391
+ERROR 2026-06-20 20:30:12,691 log Internal Server Error: /movies/theater/1/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 84, in book_seats
+    error_message=f"The following seats are already booked:{',',join(error_seats)}"
+                                                                ^^^^
+NameError: name 'join' is not defined
+ERROR 2026-06-20 20:30:12,691 basehttp "POST /movies/theater/1/seats/book/ HTTP/1.1" 500 79391
+ERROR 2026-06-20 20:41:17,769 log Internal Server Error: /movies/theater/1/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 84, in book_seats
+    error_message=f"The following seats are already booked:{',',join(error_seats)}"
+                                                                ^^^^
+NameError: name 'join' is not defined
+ERROR 2026-06-20 20:41:17,786 basehttp "POST /movies/theater/1/seats/book/ HTTP/1.1" 500 79392
+ERROR 2026-06-20 20:59:59,685 log Internal Server Error: /movies/theater/1/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 84, in book_seats
+    error_message=f"The following seats are already booked:{',',join(error_seats)}"
+                                                                ^^^^
+NameError: name 'join' is not defined
+ERROR 2026-06-20 20:59:59,686 basehttp "POST /movies/theater/1/seats/book/ HTTP/1.1" 500 79392
+ERROR 2026-06-20 22:07:16,697 tasks Failed to send email for booking 12. Error: SMTP.starttls() got an unexpected keyword argument 'keyfile'
+ERROR 2026-06-20 22:17:26,271 tasks Failed to send email for booking 13. Error: SMTP.starttls() got an unexpected keyword argument 'keyfile'
+ERROR 2026-06-21 17:07:01,654 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: movies_movie.trailer_url
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\users\views.py", line 10, in home
+    return render(request,'home.html',{'movies':movies})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\defaulttags.py", line 332, in render
+    if match:
+       ^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\query.py", line 404, in __bool__
+    self._fetch_all()
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: movies_movie.trailer_url
+ERROR 2026-06-21 17:07:01,663 log "GET / HTTP/1.1" 500 205665
+ERROR 2026-06-21 17:07:14,933 log Internal Server Error: /admin/movies/movie/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: movies_movie.trailer_url
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\admin\options.py", line 711, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\admin\options.py", line 2124, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\query.py", line 372, in __len__
+    self._fetch_all()
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: movies_movie.trailer_url
+ERROR 2026-06-21 17:07:14,941 log "GET /admin/movies/movie/ HTTP/1.1" 500 180379
+ERROR 2026-06-29 16:45:33,516 log Internal Server Error: /movies/checkout/1/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 117, in razorpay_checkout
+    razorpay_order = razorpay_client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\client.py", line 252, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\client.py", line 182, in request
+    response = getattr(self.session, method)(url, auth=auth_to_use,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+ERROR 2026-06-29 16:45:33,522 log "GET /movies/checkout/1/ HTTP/1.1" 500 206286
+ERROR 2026-06-29 16:52:57,701 log Internal Server Error: /movies/payment-success/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\urls.py", line 15, in <lambda>
+    path('payment-success/', lambda request: render(request, 'movies/success.html'), name='payment_success'),
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: movies/success.html
+ERROR 2026-06-29 16:52:57,702 log "GET /movies/payment-success/ HTTP/1.1" 500 88238
+ERROR 2026-06-29 18:17:30,634 log Internal Server Error: /movies/theater/1/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 78, in book_seats
+    locked_seats = Seat.objects.select_for_update().filter(id__in=selected_seat_ids)
+                                                                  ^^^^^^^^^^^^^^^^^
+NameError: name 'selected_seat_ids' is not defined. Did you mean: 'selected_seats'?
+ERROR 2026-06-29 18:17:30,634 log "POST /movies/theater/1/seats/book/ HTTP/1.1" 500 80885
+ERROR 2026-06-29 18:17:34,781 log Internal Server Error: /movies/theater/1/seats/book/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 78, in book_seats
+    locked_seats = Seat.objects.select_for_update().filter(id__in=selected_seat_ids)
+                                                                  ^^^^^^^^^^^^^^^^^
+NameError: name 'selected_seat_ids' is not defined. Did you mean: 'selected_seats'?
+ERROR 2026-06-29 18:17:34,781 log "POST /movies/theater/1/seats/book/ HTTP/1.1" 500 80898
+ERROR 2026-06-29 18:47:22,696 tasks Failed to send email for booking 18. Error: Booking matching query does not exist.
+ERROR 2026-06-29 18:47:23,319 tasks Failed to send email for booking 17. Error: Booking matching query does not exist.
+ERROR 2026-06-29 18:47:24,002 tasks Failed to send email for booking 16. Error: Booking matching query does not exist.
+ERROR 2026-06-29 18:47:24,347 tasks Failed to send email for booking 15. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:45,470 tasks Failed to send email for booking 18. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:47,158 tasks Failed to send email for booking 17. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:47,241 tasks Failed to send email for booking 16. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:47,323 tasks Failed to send email for booking 15. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:58,416 tasks Failed to send email for booking 18. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:58,516 tasks Failed to send email for booking 17. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:58,615 tasks Failed to send email for booking 16. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:02:58,702 tasks Failed to send email for booking 15. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:45,471 tasks Failed to send email for booking 18. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:47,159 tasks Failed to send email for booking 17. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:47,536 tasks Failed to send email for booking 16. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:47,650 tasks Failed to send email for booking 15. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:58,420 tasks Failed to send email for booking 18. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:58,514 tasks Failed to send email for booking 17. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:58,625 tasks Failed to send email for booking 16. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:05:58,722 tasks Failed to send email for booking 15. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:45,487 tasks Failed to send email for booking 18. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:47,152 tasks Failed to send email for booking 17. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:47,534 tasks Failed to send email for booking 16. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:47,665 tasks Failed to send email for booking 15. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:58,434 tasks Failed to send email for booking 18. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:58,521 tasks Failed to send email for booking 17. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:58,633 tasks Failed to send email for booking 16. Error: Booking matching query does not exist.
+ERROR 2026-06-29 21:08:58,717 tasks Failed to send email for booking 15. Error: Booking matching query does not exist.
+ERROR 2026-07-06 21:29:57,337 log Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 586, in parse
+    self.extend_nodelist(nodelist, compiled_result, token)
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\template\base.py", line 607, in extend_nodelist
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Template: C:\Users\teena\djnago-bookmyshow-clone\templates\admin\index.html, {% extends "admin/index.html" %} must be the first tag in 'admin/index.html'.
+ERROR 2026-07-06 21:29:57,345 log "GET /admin/ HTTP/1.1" 500 139432
+ERROR 2026-07-09 12:37:23,877 log Internal Server Error: /movies/checkout/7/
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\movies\views.py", line 115, in razorpay_checkout
+    razorpay_order = razorpay_client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\client.py", line 252, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\razorpay\client.py", line 182, in request
+    response = getattr(self.session, method)(url, auth=auth_to_use,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\teena\djnago-bookmyshow-clone\venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+ERROR 2026-07-09 12:37:23,892 log "GET /movies/checkout/7/ HTTP/1.1" 500 206561
