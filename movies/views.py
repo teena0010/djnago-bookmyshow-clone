@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.db.models import Count, Q
 from django.core.paginator import Paginator
-from .tasks import send_ticket_email
 import razorpay
 import json
 from django.conf import settings
@@ -167,7 +166,7 @@ def razorpay_verify(request):
                     seat.is_booked = True
                     seat.save()
                     try:
-                        send_ticket_email.delay(booking_id=booking.id, payment_id=params['razorpay_payment_id'])
+                        send_ticket_email(booking_id=booking.id, payment_id=params['razorpay_payment_id'])
                     except Exception as e:
                         print(f"Non-critical error: Email task could not be queued: {e}")
                     return redirect('payment_success')
