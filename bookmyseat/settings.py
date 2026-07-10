@@ -22,6 +22,7 @@ except ImportError:
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 try:
+    from dotenv import load_dotenv
     env_path = os.path.join(BASE_DIR, '.env')
     load_dotenv(env_path)
 except ImportError:
