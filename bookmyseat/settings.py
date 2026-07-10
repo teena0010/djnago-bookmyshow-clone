@@ -19,10 +19,13 @@ try:
     load_dotenv()
 except ImportError:
     pass
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-env_path = os.path.join(BASE_DIR, '.env')
-load_dotenv(env_path)
+try:
+    env_path = os.path.join(BASE_DIR, '.env')
+    load_dotenv(env_path)
+except ImportError:
+    pass
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
