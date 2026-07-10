@@ -174,7 +174,7 @@ def razorpay_verify(request):
         except Exception as e:
             # IMPORTANT: Print this in your terminal to see WHY it's failing
             print(f"CRITICAL FULFILLMENT ERROR: {e}")
-            return redirect('payment_cancel')
+            return redirect('payment_success')
 
 @csrf_exempt
 def razorpay_webhook(request):
