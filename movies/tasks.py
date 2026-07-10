@@ -2,7 +2,6 @@ import logging
 from django.db import transaction
 from django.utils import timezone
 from datetime import timedelta
-from celery import shared_task
 from django.core.mail import send_mail
 from .models import Order, Seat
 from django.core.mail import EmailMultiAlternatives
@@ -12,7 +11,6 @@ from .models import Booking
 
 logger = logging.getLogger('celery_tasks')
 
-@shared_task(bind=True, autoretry_for=(Exception,), retry_backoff=True, retry_kwargs={'max_retries': 3})
 def send_ticket_email(self,booking_id, payment_id):
     try:
         booking = Booking.objects.get(id=booking_id)
@@ -39,7 +37,6 @@ def send_ticket_email(self,booking_id, payment_id):
         logger.error(f"Failed to send email for booking {booking_id}. Error: {str(e)}")
         raise self.retry(exc=e)
  
-@shared_task
 def release_expired_reservations():
     # 1. Define the threshold variable here
     expiration_time = timezone.now() - timedelta(minutes=15)
