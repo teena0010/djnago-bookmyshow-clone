@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.db.models import Count, Q
 from django.core.paginator import Paginator
+from .tasks import send_ticket_email
 import razorpay
 import json
 from django.conf import settings
@@ -13,6 +14,14 @@ from .models import Order, Movie, ProcessedWebhook
 from django.db import transaction
 from django.utils import timezone
 from datetime import timedelta
+
+@csrf_exempt
+def email_webhook(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        send_ticket_email(data['booking_id'], data['payment_id'])
+        return HttpResponse("Email processed", status=200)
+    return HttpResponse("Bad Request", status=400)
 
 def movie_list(request):
     search_query=request.GET.get('search')
@@ -165,15 +174,21 @@ def razorpay_verify(request):
                 if created:
                     seat.is_booked = True
                     seat.save()
-                    try:
-                        send_ticket_email(booking_id=booking.id, payment_id=params['razorpay_payment_id'])
-                    except Exception as e:
-                        print(f"Non-critical error: Email task could not be queued: {e}")
-                    return redirect('payment_success')
+                    trigger_email_task(booking.id, params['razorpay_payment_id'])
+                    
+        return redirect('payment_success')
         except Exception as e:
             # IMPORTANT: Print this in your terminal to see WHY it's failing
             print(f"CRITICAL FULFILLMENT ERROR: {e}")
             return redirect('payment_cancel')
+
+@csrf_exempt
+def email_webhook(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        send_ticket_email(data['booking_id'], data['payment_id'])
+        return HttpResponse("Email processed", status=200)
+    return HttpResponse("Bad Request", status=400)
 
 @csrf_exempt
 def razorpay_webhook(request):
