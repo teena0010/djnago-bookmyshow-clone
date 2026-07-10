@@ -10,3 +10,4 @@ razorpay
 celery
 redis
 django-redis
+python-dotenv
