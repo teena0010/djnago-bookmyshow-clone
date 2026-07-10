@@ -10,4 +10,5 @@ urlpatterns=[
     path('payment/verify/', views.razorpay_verify, name='razorpay_verify'),
     path('payment-success/', lambda request: render(request, 'movies/success.html'), name='payment_success'),
     path('payment-cancel/', lambda request: render(request, 'movies/cancel.html'), name='payment_cancel'),
+    path('email-webhook/', views.email_webhook, name='email-webhook'),
 ]
