@@ -11,7 +11,7 @@ from .models import Booking
 
 logger = logging.getLogger('celery_tasks')
 
-def send_ticket_email(self,booking_id, payment_id):
+def send_ticket_email(booking_id, payment_id):
     try:
         booking = Booking.objects.get(id=booking_id)
         
@@ -35,7 +35,7 @@ def send_ticket_email(self,booking_id, payment_id):
 
     except Exception as e:
         logger.error(f"Failed to send email for booking {booking_id}. Error: {str(e)}")
-        raise self.retry(exc=e)
+        pass
  
 def release_expired_reservations():
     # 1. Define the threshold variable here
