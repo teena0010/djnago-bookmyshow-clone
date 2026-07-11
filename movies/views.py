@@ -74,6 +74,7 @@ def theater_list(request,movie_id):
 
 @login_required(login_url='/login/')
 def book_seats(request, theater_id):
+    release_expired_reservations()
     theaters = get_object_or_404(Theater, id=theater_id)
     seats = Seat.objects.filter(theater=theaters)
     if request.method == 'POST':
@@ -265,3 +266,6 @@ def razorpay_webhook(request):
 
     return HttpResponse(status=200)
 
+def cron_release_seats(request):
+    count = release_expired_reservations()
+    return HttpResponse(f"Released {count} seats.")
