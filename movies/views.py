@@ -180,11 +180,7 @@ def razorpay_verify(request):
                 if created:
                     seat.is_booked = True
                     seat.save()
-                    try:
-                        trigger_email_task(booking.id, params['razorpay_payment_id'])
-                        print("DEBUG: email sent successfully")
-                    except Exception as e:
-                        print(f"DEBUG: EMAIL SENDING FAILED: {e}")
+                    trigger_email_task(booking.id, params['razorpay_payment_id'])
                     
             return redirect('payment_success')
         except Exception as e:
