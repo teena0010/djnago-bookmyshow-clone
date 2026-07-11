@@ -22,9 +22,9 @@ def trigger_email_task(booking_id, payment_id):
         return
     
     # The URL where your Django app is hosted (e.g., https://your-app.vercel.app)
-    vercel_url = os.environ.get('VERCEL_URL')
-    app_url = f"https://{vercel_url}" if vercel_url else "https://djnago-bookmyshow-clone-4fje.vercel.app"
+    app_url = "https://djnago-bookmyshow-clone-4fje.vercel.app" 
     
+    destination = f"{app_url}/movies/email-webhook/"
     url = f"{base_url}/v2/publish/{destination}"
     
     headers = {
