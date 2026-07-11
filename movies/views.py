@@ -7,6 +7,7 @@ from django.db import IntegrityError
 from django.db.models import Count, Q
 from django.core.paginator import Paginator
 from .tasks import send_ticket_email
+from .tasks import release_expired_reservations
 import razorpay
 import json
 from django.conf import settings
