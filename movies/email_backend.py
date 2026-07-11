@@ -1,18 +1,22 @@
 from django.core.mail.backends.smtp import EmailBackend
 import smtplib
-import ssl
 
 class PatchedEmailBackend(EmailBackend):
     def open(self):
         if self.connection:
             return False
 
-        connection_params = {'local_hostname': self.local_hostname}
+        # Use a safe fallback check in case local_hostname doesn't exist on this Django version
+        connection_params = {}
+        local_hostname = getattr(self, 'local_hostname', None)
+        if local_hostname:
+            connection_params['local_hostname'] = local_hostname
+            
         if self.timeout is not None:
             connection_params['timeout'] = self.timeout
 
         try:
-            # Force standard SMTP initialization safely
+            # Open a secure connection directly over SSL on Port 465
             self.connection = smtplib.SMTP_SSL(
                 self.host, 
                 self.port, 
