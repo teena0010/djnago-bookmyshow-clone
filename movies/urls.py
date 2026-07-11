@@ -11,4 +11,5 @@ urlpatterns=[
     path('payment-success/', lambda request: render(request, 'movies/success.html'), name='payment_success'),
     path('payment-cancel/', lambda request: render(request, 'movies/cancel.html'), name='payment_cancel'),
     path('email-webhook/', views.email_webhook, name='email-webhook'),
+    path('cron/release-seats/', views.cron_release_seats),
 ]
