@@ -58,14 +58,16 @@ def send_ticket_email(booking_id, payment_id):
         email.attach_alternative(html_content, "text/html")
         
         email.send(fail_silently=False)
+        logger.info(f"SUCCESS: Email dispatched seamlessly for booking {booking_id} to {booking.user.email}")
         return f"Email sent successfully to {booking.user.email}"
     
     except Booking.DoesNotExist:
+        logger.warning(f"WARNING: Skipping email execution. Booking ID {booking_id} does not exist in the database.")
         return "Booking not found, skipping email."
 
     except Exception as e:
-        logger.error(f"Failed to send email for booking {booking_id}. Error: {str(e)}")
-        pass
+        logger.exception(f"CRITICAL: SMTP or Template Engine failure for booking {booking_id}. Reason: {str(e)}")
+        raise e
  
 def release_expired_reservations():
     # 1. Define the threshold variable here
