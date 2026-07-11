@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.db.models import Count, Q
 from django.core.paginator import Paginator
-from .tasks import send_ticket_email
+from .tasks import send_ticket_email , trigger_email_task
 from .tasks import release_expired_reservations
 import razorpay
 import json
@@ -145,33 +145,7 @@ def razorpay_checkout(request, order_id):
     }
     return render(request, 'movies/razorpay_checkout.html', context)
 
-def trigger_email_task(booking_id, payment_id):
-    # Retrieve configuration from Environment Variables
-    base_url = os.environ.get('QSTASH_URL')
-    token = os.environ.get('QSTASH_TOKEN')
-    if not base_url:
-        # This will show you exactly what is wrong if the variable is missing
-        print("CRITICAL: QSTASH_URL environment variable is not set in Vercel!")
-        return
-    
-    # The URL where your Django app is hosted (e.g., https://your-app.vercel.app)
-    app_url = "https://djnago-bookmyshow-clone-4fje-6r3rl513a-teena33.vercel.app"
-    destination = f"{app_url}/email-webhook/"
-    
-    url = f"{base_url}/v2/publish/{destination}"
-    
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-    }
-    
-    payload = {
-        "booking_id": booking_id,
-        "payment_id": payment_id
-    }
-    
-    # Triggering the task
-    requests.post(url, json=payload, headers=headers)
+
 
 @csrf_exempt
 def razorpay_verify(request):
