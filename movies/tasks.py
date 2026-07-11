@@ -11,6 +11,34 @@ from .models import Booking
 
 logger = logging.getLogger('celery_tasks')
 
+def trigger_email_task(booking_id, payment_id):
+    # Retrieve configuration from Environment Variables
+    base_url = os.environ.get('QSTASH_URL')
+    token = os.environ.get('QSTASH_TOKEN')
+    if not base_url:
+        # This will show you exactly what is wrong if the variable is missing
+        print("CRITICAL: QSTASH_URL environment variable is not set in Vercel!")
+        return
+    
+    # The URL where your Django app is hosted (e.g., https://your-app.vercel.app)
+    app_url = "https://djnago-bookmyshow-clone-4fje-6r3rl513a-teena33.vercel.app"
+    destination = f"{app_url}/email-webhook/"
+    
+    url = f"{base_url}/v2/publish/{destination}"
+    
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "booking_id": booking_id,
+        "payment_id": payment_id
+    }
+    
+    # Triggering the task
+    requests.post(url, json=payload, headers=headers)
+
 def send_ticket_email(booking_id, payment_id):
     try:
         booking = Booking.objects.get(id=booking_id)
