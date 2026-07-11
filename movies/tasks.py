@@ -17,9 +17,8 @@ def trigger_email_task(booking_id, payment_id):
     # Retrieve configuration from Environment Variables
     base_url = os.environ.get('QSTASH_URL')
     token = os.environ.get('QSTASH_TOKEN')
-    if not base_url:
-        # This will show you exactly what is wrong if the variable is missing
-        print("CRITICAL: QSTASH_URL environment variable is not set in Vercel!")
+    if not base_url or not token:
+        print(f"CRITICAL CONFIG ERROR: QSTASH_URL={bool(base_url)}, QSTASH_TOKEN={bool(token)}")
         return
     
     # The URL where your Django app is hosted (e.g., https://your-app.vercel.app)
@@ -36,10 +35,13 @@ def trigger_email_task(booking_id, payment_id):
     payload = {
         "booking_id": booking_id,
         "payment_id": payment_id
-    }
-    
-    # Triggering the task
-    requests.post(url, json=payload, headers=headers)
+    }    
+    try:
+        response = requests.post(url, json=payload, headers=headers)
+        # Force Vercel logs to print the status of the background queue request
+        print(f"QSTASH API RESPONSE STATUS: {response.status_code}, BODY: {response.text}")
+    except Exception as e:
+        print(f"QSTASH CONNECTION CRASH: {str(e)}")
 
 def send_ticket_email(booking_id, payment_id):
     try:
