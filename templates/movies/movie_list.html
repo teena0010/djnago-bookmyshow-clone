@@ -66,9 +66,17 @@
         <div class="col-md-9">
             <div class="row" id="movieList">
 {% for movie in page_obj %}
-                <p style="color: red; font-weight: bold; background: yellow;">
-    DEBUG DATA: {{ movie.name }} | Image: {{ movie.image }} | Photo: {{ movie.photo }}
-</p>
+                <div class="alert alert-warning text-dark p-2" style="font-family: monospace; font-size: 12px;">
+    <strong>Raw Keys Found:</strong> 
+    {% for key, value in movie.items %}
+        [{{ key }}: {{ value }}] 
+    {% empty %}
+        <!-- If items doesn't work, try iterating the attributes directly -->
+        {% for field in movie._meta.fields %}
+            [{{ field.name }}]
+        {% endfor %}
+    {% endfor %}
+</div>
         <div class="col-md-4 mb-4">
         <div class="card h-100 shadow-sm">
 {% if movie.youtube_id %}
