@@ -80,9 +80,15 @@
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
 {% else %}
-    {% with movie.image|slugify as text_check %}
-        <img src="{{ movie.image }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';">
-    {% endwith %}
+    {% else %}
+    <!-- Check if a value exists, then force output as a string -->
+    {% if movie.image %}
+        <img src="{{ movie.image.value|default:movie.image }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';">
+    {% else %}
+        <!-- Backup if the database field is completely null/empty -->
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500" class="card-img-top" alt="No Poster Available" style="height: 300px; object-fit: cover;">
+    {% endif %}
+{% endif %}
 {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ movie.name }}</h5>
