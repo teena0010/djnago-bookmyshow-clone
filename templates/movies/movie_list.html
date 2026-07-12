@@ -65,38 +65,24 @@
 
         <div class="col-md-9">
             <div class="row" id="movieList">
-{% for movie in page_obj %}
-                <div class="alert alert-warning text-dark p-2" style="font-family: monospace; font-size: 12px;">
-    <strong>Raw Keys Found:</strong> 
-    {% for key, value in movie.items %}
-        [{{ key }}: {{ value }}] 
-    {% empty %}
-        <!-- If items doesn't work, try iterating the attributes directly -->
-        {% for field in movie._meta.fields %}
-            [{{ field.name }}]
-        {% endfor %}
-    {% endfor %}
-</div>
-        <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-{% if movie.youtube_id %}
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe 
-            class="embed-responsive-item"
-            src="https://www.youtube-nocookie.com/embed/{{ movie.youtube_id }}"
-            title="{{ movie.name }} Trailer"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    </div>
-{% else %}
-    {% if movie.get_raw_image %}
-        <img src="{{ movie.get_raw_image }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';">
-    {% else %}
-        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500" class="card-img-top" alt="No Poster Available" style="height: 300px; object-fit: cover;">
-    {% endif %}
-{% endif %}
+                {% for movie in page_obj %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {% if movie.youtube_id %}
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe 
+                                    class="embed-responsive-item"
+                                    src="https://www.youtube-nocookie.com/embed/{{ movie.youtube_id }}"
+                                    title="{{ movie.name }} Trailer"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen
+                                    loading="lazy"
+                                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                            </div>
+                        {% else %}
+                            <!-- Direct URL fallback with strict onerror handling -->
+                            <img src="{{ movie.image }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';">
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ movie.name }}</h5>
                             <p class="card-text">
@@ -153,6 +139,7 @@
             </div>
         </div>
     </div>
+</div>
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -174,13 +161,11 @@
 
 <script>
     $(document).ready(function() {
-        // Add animation to cards on hover
         $('.card').hover(
             function() { $(this).addClass('shadow'); },
             function() { $(this).removeClass('shadow'); }
         );
 
-        // Implement client-side filtering
         $('input[name="search"]').on('input', function() {
             var searchTerm = $(this).val().toLowerCase();
             $('#movieList .col-md-4').each(function() {
@@ -194,15 +179,4 @@
         });
     });
 </script>
-<!-- <h1>Movies</h1>
-<ul>
-    {% for movie in movies%}
-    <li>
-        <img src="{{movie.image.url}}" alt="image" >
-        <strong>{{movie.name}}</strong>{{movie.rating}}
-        <p>Cast:{{movie.cast}}</p>
-        <a href="{% url 'theater_list' movie.id %}">View Theaters</a>
-    </li>
-    {% endfor %}
-</ul> -->
 {% endblock %}
