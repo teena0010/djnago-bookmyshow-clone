@@ -65,9 +65,12 @@
 
         <div class="col-md-9">
             <div class="row" id="movieList">
-                {% for movie in page_obj %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
+{% for movie in page_obj %}
+                <p style="color: red; font-weight: bold; background: yellow;">
+    DEBUG DATA: {{ movie.name }} | Image: {{ movie.image }} | Photo: {{ movie.photo }}
+</p>
+        <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
 {% if movie.youtube_id %}
     <div class="embed-responsive embed-responsive-16by9">
         <iframe 
