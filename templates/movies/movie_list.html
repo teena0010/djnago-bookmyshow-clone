@@ -68,7 +68,7 @@
                 {% for movie in page_obj %}
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
-                        {% if movie.youtube_id %}
+{% if movie.youtube_id %}
     <div class="embed-responsive embed-responsive-16by9">
         <iframe 
             class="embed-responsive-item"
@@ -80,15 +80,9 @@
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
 {% else %}
-    {% if movie.image %}
-        {% if "http" in movie.image|stringformat:"s" or "https" in movie.image|stringformat:"s" %}
-            <img src="{{ movie.image }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;">
-        {% else %}
-            <img src="{{ movie.image.url }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;">
-        {% endif %}
-    {% else %}
-        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500" class="card-img-top" alt="No Poster Available" style="height: 300px; object-fit: cover;">
-    {% endif %}
+    {% with movie.image|slugify as text_check %}
+        <img src="{{ movie.image }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';">
+    {% endwith %}
 {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ movie.name }}</h5>
