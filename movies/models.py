@@ -29,6 +29,12 @@ class Movie(models.Model):
         return self.name
     
     trailer_url = models.URLField(max_length=200, blank=True, null=True)
+    def get_raw_image(self):
+        # Forces Django to return the actual database value, bypassing any field type wrappers
+        try:
+            return self.__dict__.get('image', '')
+        except Exception:
+            return ''
 
     @property
     def youtube_id(self):
